@@ -412,20 +412,22 @@
 
     <!--2nd section start -->
 
-    <section class="pt[200px] flex flex-col items-center">
+    <section class="pt[200px] flex flex-col items-center px-4 md:px-0 pb-40">
        <div class="text-center">
     <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[70px] pt-[90px] md:pb-[120px] md:pt-[150px]  ">Our Best o2</h1>
    </div>
-   <div class="w-[1300px] min-h-[400px] mt-[30px] md:h-[280px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 ">
-    <div class="flex flex-row gap-x-[200px]">
-      <div class="w-[500px] h-[500px] -mt-[35px]">
-        <img src="./assets/home-tree.png" alt="">
+   <div class="max-w-[1300px] w-full min-h-[400px] mt-[30px]   bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 ">
+    <div class="flex flex-col md:flex-row gap-x-[200px]">
+      <div class="w-full md:w-1/2 flex justify-center items-center pt-3 md:pt-0 pr-1">
+        <img src="./assets/home-tree.png" alt="bonsai-trees" class="max-w-full h-auto drop-shadow-2xl">
       </div>
-      <div class="w-[600px]">
-        <h1 class="font-semibold text-white opacity-75 text-[35px] ">We Have Small And Best O2 Plants Collection’s</h1>
-        <p class="font-semibold text-white text-[18px]  opacity-75 ">Transform your living space into a personal sanctuary designed to nurture your well-being. Our hand-selected $O_2$ plants are chosen for their vibrant patterns and their natural ability to purify the atmosphere, effectively reducing your daily stress.</p>
-        <p class="font-semibold text-white text-[18px]  opacity-75 ">Create a sense of lasting tranquility in any room, from your home office to your bedside. Our collection offers low-maintenance beauty that allows your indoor garden to flourish effortlessly, bringing nature's peace directly to you.</p>
-        <button class="btn  text-white opacity-75 px-6 border border-white ">Explore</button>
+      <div class="w-full md:w-[600px] px-4 md:px-0 text-center md:text-left mr-0 md:mr-4 ">
+        <h1 class="font-semibold text-white opacity-75 text-[25px] md:text-[35px] pt-14 pb-8">We Have Small And Best O2 Plants Collection’s</h1>
+        <p class="font-semibold text-white text-[12px] md:text-[18px]  opacity-75  pb-6">Transform your living space into a personal sanctuary designed to nurture your well-being. Our hand-selected $O_2$ plants are chosen for their vibrant patterns and their natural ability to purify the atmosphere, effectively reducing your daily stress.</p>
+        <p class="font-semibold text-white text-[12px] md:text-[18px]  opacity-75 pb-6">Create a sense of lasting tranquility in any room, from your home office to your bedside. Our collection offers low-maintenance beauty that allows your indoor garden to flourish effortlessly, bringing nature's peace directly to you.</p>
+      <button class="px-8 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-[#14291c] transition-all duration-300 font-medium mb-4 ">
+                        Explore More
+                    </button>
       </div>
 
 
@@ -437,10 +439,44 @@
     </section>
 
 </main>
-  
+ 
+<!-- footer section -->
+ <footer class="footer sm:footer-horizontal bg-[#08160E] text-white p-10">
+  <nav>
+  <div class="flex flex-row items-center">
+    <img src="./assets/house-plants.png" alt="" class="w-16">
+    <p class="text-[35px] font-black opacity-75">PLANTO.</p>
+  </div>
+  <p class="text-[12px] font-semibold ">Bringing nature indoors, one leaf at a time.<br> Planto is dedicated to providing high-quality houseplants and the knowledge you need to help them flourish in any environment.</p>
 
-  
-  
+  </nav>
+  <nav>
+    <h6 class="footer-title">Company</h6>
+    <a class="link link-hover">About us</a>
+    <a class="link link-hover">Contact</a>
+    <a class="link link-hover">Jobs</a>
+    <a class="link link-hover">Press kit</a>
+  </nav>
+  <nav>
+    <h6 class="footer-title">Legal</h6>
+    <a class="link link-hover">Terms of use</a>
+    <a class="link link-hover">Privacy policy</a>
+    <a class="link link-hover">Cookie policy</a>
+  </nav>
+  <form>
+    <h6 class="footer-title">Newsletter</h6>
+    <fieldset class="w-80">
+      <label >Enter your email address</label>
+      <div class="join">
+        <input
+          type="text"
+          placeholder="username@site.com"
+          class="input input-bordered join-item" />
+        <button class="btn btn-primary join-item bg-green-600">Subscribe</button>
+      </div>
+    </fieldset>
+  </form>
+</footer>
 
 
   <!-- Flowbite JS (CDN) -->
