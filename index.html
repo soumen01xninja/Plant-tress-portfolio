@@ -1,32 +1,239 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant-Tress-Portfolio</title>
-    <style>
-        .inter {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-               }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant-Tress-Portfolio</title>
+  <style>
+    .inter {
+      font-family: "Inter", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+    }
 
-               
+    /* Toast animation */
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
 
-    </style>
-    <!-- google fonts -->
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
 
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    @keyframes slideOutRight {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
 
-    <!--font awesome-->
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
 
-    <script src="https://kit.fontawesome.com/97c8531298.js" crossorigin="anonymous"></script>
+    .toast-enter {
+      animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-    <!-- tailwind-cdn -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    .toast-exit {
+      animation: slideOutRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Payment Modal animations */
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalScaleUp {
+      from {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalFadeOut {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes modalScaleDown {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+    }
+
+    .modal-overlay-enter {
+      animation: modalFadeIn 0.3s ease forwards;
+    }
+
+    .modal-overlay-exit {
+      animation: modalFadeOut 0.25s ease forwards;
+    }
+
+    .modal-content-enter {
+      animation: modalScaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .modal-content-exit {
+      animation: modalSlideDown 0.3s cubic-bezier(0.5, 0, 0.75, 0) forwards;
+    }
+
+    /* Slide down exit for modal content */
+    @keyframes modalSlideDown {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+    }
+
+    /* Spinner animation */
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-top-color: #22c55e;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* Success checkmark */
+    @keyframes checkPop {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .check-pop {
+      animation: checkPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Focus Mode Blur Effect */
+    body.focus-mode>header,
+    body.focus-mode>footer,
+    body.focus-mode>main> :not(#review-section) {
+      filter: blur(8px);
+      opacity: 0.3;
+    }
+
+    body>header,
+    body>footer,
+    body>main>* {
+      transition: filter 0.5s ease, opacity 0.5s ease;
+    }
+
+    /* Individual Review Focus */
+    #review-section .review-card {
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    #review-section:hover .review-card:not(:hover) {
+      filter: blur(8px);
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+
+    #review-section .review-card:hover {
+      transform: scale(1.05);
+      z-index: 50;
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-left {
+      animation: slideInLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    .animate-slide-right {
+      animation: slideInRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+  </style>
+  <!-- google fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+
+  <!--font awesome-->
+
+  <script src="https://kit.fontawesome.com/97c8531298.js" crossorigin="anonymous"></script>
+
+  <!-- tailwind-cdn -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -38,448 +245,1202 @@
     }
   </script>
   <!-- daisy ui -->
-   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-<!-- flow-bite cdn -->
- <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- flow-bite cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
+
 <body class="inter">
+  <!-- Toast notification container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col gap-3"></div>
+
+  <!-- Payment Modal Overlay -->
+  <div id="payment-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+    <!-- Backdrop — heavy blur to push the site out of focus -->
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-md" onclick="closePaymentModal()"></div>
+    <!-- Modal Content — brand green/dark glass theme -->
+    <div id="modal-content"
+      class="relative w-[90%] max-w-[480px] rounded-[30px] shadow-[0_25px_60px_rgba(0,0,0,0.5)] border border-green-500/20 p-8 md:p-10"
+      style="background: linear-gradient(145deg, rgba(20,41,28,0.95), rgba(8,22,14,0.98)); backdrop-filter: blur(40px);">
+
+      <!-- Green accent glow at top -->
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 rounded-b-full bg-gradient-to-r from-transparent via-green-500 to-transparent">
+      </div>
+
+      <!-- Close Button -->
+      <button onclick="closePaymentModal()"
+        class="absolute top-5 right-6 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 text-white/50 hover:text-white hover:bg-white/10 hover:ring-1 hover:ring-white/20 text-lg transition-all duration-200">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- Order Summary (dynamically filled) -->
+      <div id="modal-order-summary">
+        <p class="text-green-400 text-xs font-semibold tracking-widest uppercase mb-2">Order Summary</p>
+        <h2 id="modal-product-name" class="text-white text-2xl md:text-3xl font-bold"></h2>
+        <p id="modal-product-price" class="text-green-400 text-xl font-semibold mt-1 mb-6"></p>
+        <div class="h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent mb-6"></div>
+
+        <!-- Payment Method Buttons -->
+        <p class="text-white/70 text-sm font-medium mb-4">Choose payment method</p>
+        <div class="flex flex-col gap-3">
+          <button onclick="selectPaymentMethod('Bank Account')"
+            class="flex items-center gap-4 w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-green-500/10 hover:border-green-500/30 hover:shadow-[0_0_25px_rgba(34,197,94,0.12)] transition-all duration-300 group">
+            <span
+              class="flex items-center justify-center w-11 h-11 rounded-xl bg-blue-500/15 text-lg group-hover:scale-110 transition-transform">🏦</span>
+            <div class="text-left">
+              <span class="font-medium block">Bank Account</span>
+              <span class="text-white/40 text-xs">Enter account number</span>
+            </div>
+            <i
+              class="fa-solid fa-chevron-right text-white/20 ml-auto text-sm group-hover:text-green-400 group-hover:translate-x-1 transition-all"></i>
+          </button>
+          <button onclick="selectPaymentMethod('bKash / Nagad')"
+            class="flex items-center gap-4 w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-green-500/10 hover:border-green-500/30 hover:shadow-[0_0_25px_rgba(34,197,94,0.12)] transition-all duration-300 group">
+            <span
+              class="flex items-center justify-center w-11 h-11 rounded-xl bg-pink-500/15 text-lg group-hover:scale-110 transition-transform">📱</span>
+            <div class="text-left">
+              <span class="font-medium block">bKash / Nagad</span>
+              <span class="text-white/40 text-xs">Mobile payment</span>
+            </div>
+            <i
+              class="fa-solid fa-chevron-right text-white/20 ml-auto text-sm group-hover:text-green-400 group-hover:translate-x-1 transition-all"></i>
+          </button>
+          <button onclick="selectPaymentMethod('Google Pay')"
+            class="flex items-center gap-4 w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white hover:bg-green-500/10 hover:border-green-500/30 hover:shadow-[0_0_25px_rgba(34,197,94,0.12)] transition-all duration-300 group">
+            <span
+              class="flex items-center justify-center w-11 h-11 rounded-xl bg-green-500/15 text-lg group-hover:scale-110 transition-transform">💳</span>
+            <div class="text-left">
+              <span class="font-medium block">Google Pay</span>
+              <span class="text-white/40 text-xs">Instant payment</span>
+            </div>
+            <i
+              class="fa-solid fa-chevron-right text-white/20 ml-auto text-sm group-hover:text-green-400 group-hover:translate-x-1 transition-all"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Input Form State (for Bank / bKash — hidden by default) -->
+      <div id="modal-input-form" class="hidden">
+        <button onclick="backToMethods()"
+          class="flex items-center gap-2 text-white/50 hover:text-white text-sm mb-5 transition-colors">
+          <i class="fa-solid fa-arrow-left text-xs"></i> Back
+        </button>
+        <p class="text-green-400 text-xs font-semibold tracking-widest uppercase mb-2" id="modal-form-label"></p>
+        <h3 id="modal-form-title" class="text-white text-xl font-bold mb-5"></h3>
+        <label class="text-white/60 text-sm font-medium block mb-2" id="modal-input-label">Account Number</label>
+        <input id="modal-input-field" type="text" placeholder="Enter your number"
+          class="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 focus:border-green-500/50 focus:ring-1 focus:ring-green-500/30 focus:outline-none transition-all duration-200 mb-5" />
+        <button onclick="confirmPayment()"
+          class="w-full py-3.5 rounded-xl bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold hover:from-green-500 hover:to-green-400 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300">
+          Confirm Payment
+        </button>
+      </div>
+
+      <!-- Processing State (hidden by default) -->
+      <div id="modal-processing" class="hidden flex flex-col items-center justify-center py-10">
+        <div class="spinner mb-5"></div>
+        <p class="text-white text-lg font-medium">Processing Payment...</p>
+        <p id="modal-payment-method" class="text-white/40 text-sm mt-1"></p>
+      </div>
+
+      <!-- Success State (hidden by default) -->
+      <div id="modal-success" class="hidden flex flex-col items-center justify-center py-10">
+        <div class="check-pop flex items-center justify-center w-20 h-20 rounded-full bg-green-500/20 mb-5">
+          <i class="fa-solid fa-check text-green-400 text-3xl"></i>
+        </div>
+        <h3 class="text-white text-2xl font-bold">Payment Successful!</h3>
+        <p id="modal-success-detail" class="text-white/50 text-sm mt-2 text-center"></p>
+        <button onclick="closePaymentModal()"
+          class="mt-6 px-8 py-3 rounded-xl bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold hover:from-green-500 hover:to-green-400 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300">Done</button>
+      </div>
+    </div>
+  </div>
+
   <!-- <header class=" h-screen bg-cover bg-no-repeat bg-center   relative " style="background-image: url('./assets/gemini-4.png');"> -->
 
-  <header
-  class="h-screen bg-cover bg-no-repeat bg-center relative 
+  <header class="h-screen bg-cover bg-no-repeat bg-center relative 
          bg-[url('./assets/single-plant.png')] 
          md:bg-[url('./assets/gach.jpeg')]">
 
 
 
 
-<nav class="  absolute w-full z-20 top-0 start-0 p-2 md:p-[57px]">
-  <div class="max-w-screen flex items-center justify-between mx-auto">
-  <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-       
-      <img class="w-[80px] h-[35px]" src="./assets/logo-header.png"  alt="plant Logo">
-      <span class=" text-xl md:text-[20px] font-black whitespace-nowrap text-[#FFFFFF]">Planto.</span>
-  </a>
-  <div class="flex md:order-2 space-x-3 md:space-x-0 ">
-      <div class="flex md:order-2 items-center space-x-9">
-  <!-- Search Icon -->
-  <button class="hidden md:block text-[#FFFFFF] hover:text-green-600">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
+    <nav class="  absolute w-full z-20 top-0 start-0 p-2 md:p-[57px]">
+      <div class="max-w-screen flex items-center justify-between mx-auto">
+        <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
 
-  <!-- Cart Icon -->
-  <button class="hidden md:block text-[#FFFFFF] hover:text-green-600">
-    <i class="fa-solid fa-cart-shopping"></i>
-  </button>
+          <img class="w-[80px] h-[35px]" src="./assets/logo-header.png" alt="plant Logo">
+          <span class=" text-xl md:text-[20px] font-black whitespace-nowrap text-[#FFFFFF]">Planto.</span>
+        </a>
+        <div class="flex md:order-2 space-x-3 md:space-x-0 ">
+          <div class="flex md:order-2 items-center space-x-9">
+            <!-- Search Icon -->
+            <button class="hidden md:block text-[#FFFFFF] hover:text-green-600">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
 
-  <!-- Menu Icon (Mobile only) -->
-  <button class="hidden md:block text-[#FFFFFF] hover:text-green-600">
-    <i class="fa-solid fa-envelope"></i>
-  </button>
-</div>
+            <!-- Cart Icon -->
+            <button class="hidden md:block text-[#FFFFFF] hover:text-green-600 relative" id="cart-btn">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count"
+                class="absolute -top-2 -right-3 bg-green-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+            </button>
 
-      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-green-600  rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-green-600  dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-    </button>
-  </div>
-  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border  rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  justify-between">
-      <li class="">
-        <a href="#" class="block  text-[#FFFFFF] font-medium bg-blue-700 rounded-sm text-opacity-75 md:bg-transparent md:text-green-600 md:p-0 md:text-green-600 md:hover:text-green-600 md:p-0 md:dark:hover:text-blue-500 " aria-current="page">Home</a>
-      </li>
-      <li>
-        <a href="#" class="block  text-gray-900 rounded-sm font-medium  hover:bg-gray-100 text-opacity-75 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Plan type</a>
-      </li>
-      <li>
-        <a href="#" class="block  text-gray-900 rounded-sm font-medium hover:bg-gray-100  text-opacity-75 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">More</a>
-      </li>
-      <li>
-        <a href="#" class="block  text-gray-900 rounded-sm font-medium text-opacity-75 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-      </li>
-    </ul>
-  </div>
-  </div>
-</nav>
-<section class="pt-[60px] px-2 md:px-[57px] w-auto flex flex-row  justify-between ">
-  <div class="flex flex-col">
+            <!-- Menu Icon (Mobile only) -->
+            <button class="hidden md:block text-[#FFFFFF] hover:text-green-600">
+              <i class="fa-solid fa-envelope"></i>
+            </button>
+          </div>
 
-    <div class=" pt-10 md:pt-[140px] ">
-    <h1 class=" text-[60px] md:text-[100px] font-semibold text-[#FFFFFF] opacity-75 w-auto ">
-      Breath Natureal 
-    </h1>
-    <p class="text-[#FFFFFF] text-sm md:text-[20px] font-medium w-auto md:w-[893px] opacity-75">
-      Breath Natural offers premium tea plants grown with care, inspiring wellness, sustainability, and a fresh connection to nature in every sip.
-    </p>
-    <div class="pt-[30px] flex gap-5 md:gap-9 items-center ">
-    <button class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg border border-2 px-8  md:px-[59px] py-[15px] rounded-xl font-normal text-[18px] md:text-[22px] text-[#FFFFFF] opacity-75 ">Explore</button>
-    <div class="flex justify-center items-center gap-2 md:gap-4">
-      <button class="font-normal text-[32px] md:text-[54px] text-[#FFFFFF] opacity-75 font-normal btn btn-xs sm:btn-sm md:btn-md lg:btn-lg "><a href="https://www.youtube.com/watch?v=vrNNRR_0X94" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-circle-play"></i></a></i></button> 
-      <p class="font-normal md:text-[22px] text-[18px] text-[#FFFFFF] opacity-75">Live Demo...</p>
-    </div>
+          <button id="mobile-menu-btn" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-green-600 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="navbar-sticky" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M1 1h15M1 7h15M1 13h15" />
+            </svg>
+          </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+          <ul
+            class="flex flex-col p-4 md:p-0 mt-4 font-medium border  rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  justify-between">
+            <li class="">
+              <a href="#"
+                class="block  text-[#FFFFFF] font-medium bg-blue-700 rounded-sm text-opacity-75 md:bg-transparent md:text-green-600 md:p-0 md:text-green-600 md:hover:text-green-600 md:p-0 md:dark:hover:text-blue-500 "
+                aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="#category-gallery"
+                class="block  text-gray-900 rounded-sm font-medium  hover:bg-gray-100 text-opacity-75 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors">Plant
+                Type</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block  text-gray-900 rounded-sm font-medium hover:bg-gray-100  text-opacity-75 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">More</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block  text-gray-900 rounded-sm font-medium text-opacity-75 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="pt-[60px] px-2 md:px-[57px] w-auto flex flex-row  justify-between ">
+      <div class="flex flex-col">
 
-    </div>
-
-  </div>
-    
-  <!-- review section -->
-<div class="w-auto max-w-[300px] md:max-w-[409px] mt-[86px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
-  
-  <div class="flex  items-center space-x-2 ">
-    <div class="">
-      <div class="avatar">
-  <div class=" w-12 md:w-[64px] rounded-full">
-    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-  </div>
-</div>
-    </div>
-
-    <div >
-      <h1 class="font-semibold text-[14px] md:text-[19px] text-[#FFFFFF] opacity-75 ">Alena Patel</h1>
-      <div class="rating ">
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400  " />
-  <input
-    type="radio"
-    name="rating-2"
-    class="mask mask-star-2 bg-orange-400  "
-    checked="checked" />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-  <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-</div>
-
-</div>
-      
-
-  </div>
-  <p class="font-normal text-[10px] md:text-[14px] text-[#FFFFFF] opacity-75 pt-2">
-    This website offers a great variety of healthy plants at affordable prices. The ordering process is simple, delivery is fast, and customer support is helpful. Highly recommended for online plant shopping!
-
-</p>
-
-   
-
-</div>
-
-
-
-  </div>
-
-  <!-- card -->
-  
-  <div class="hidden md:block pt-[150px]">
-  <div class="relative max-w-[320px] bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-6 flex flex-col items-center">
-      
-      <img src="./assets/plant-1 (1).png" 
-           class="w-[280px] drop-shadow-2xl -mt-[140px]" 
-           alt="Plant">
-
-      <div class="pt-2 text-center">
-          <p class="text-gray-300 text-sm font-medium tracking-wide">Trendy House Plant</p>
-          <h2 class="text-3xl font-bold text-white mt-1">
-              Calathea plant
-          </h2>
-          <p class="font-thin text-gray-300 text-sm   opacity-85 ">
-            Calathea is a decorative indoor plant with vibrant patterned leaves, thriving in humidity and indirect light.
+        <div class=" pt-10 md:pt-[140px] animate-slide-left opacity-0 ">
+          <h1 class=" text-[60px] md:text-[100px] font-semibold text-[#FFFFFF] opacity-75 w-auto ">
+            Breath Natural
+          </h1>
+          <p class="text-[#FFFFFF] text-sm md:text-[20px] font-medium w-auto md:w-[893px] opacity-75">
+            Breath Natural offers premium tea plants grown with care, inspiring wellness, sustainability, and a fresh
+            connection to nature in every sip.
           </p>
+          <div class="pt-[30px] flex gap-5 md:gap-9 items-center ">
+            <button
+              class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg border border-2 px-8  md:px-[59px] py-[15px] rounded-xl font-normal text-[18px] md:text-[22px] text-[#FFFFFF] opacity-75 ">Explore</button>
+            <div class="flex justify-center items-center gap-2 md:gap-4">
+              <button
+                class="font-normal text-[32px] md:text-[54px] text-[#FFFFFF] opacity-75 font-normal btn btn-xs sm:btn-sm md:btn-md lg:btn-lg "><a
+                  href="https://www.youtube.com/watch?v=vrNNRR_0X94" target="_blank" rel="noopener noreferrer"><i
+                    class="fa-regular fa-circle-play"></i></a></i></button>
+              <p class="font-normal md:text-[22px] text-[18px] text-[#FFFFFF] opacity-75">Live Demo...</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- review section -->
+        <div
+          class="w-auto max-w-[300px] md:max-w-[409px] mt-[86px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8 animate-slide-left opacity-0">
+
+          <div class="flex  items-center space-x-2 ">
+            <div class="">
+              <div class="avatar">
+                <div class=" w-12 md:w-[64px] rounded-full">
+                  <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1 class="font-semibold text-[14px] md:text-[19px] text-[#FFFFFF] opacity-75 ">Alena Patel</h1>
+              <div class="rating ">
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400  " />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400  " checked="checked" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+              </div>
+
+            </div>
+
+          </div>
+          <p class="font-normal text-[10px] md:text-[14px] text-[#FFFFFF] opacity-75 pt-2">
+            This website offers a great variety of healthy plants at affordable prices. The ordering process is simple,
+            delivery is fast, and customer support is helpful. Highly recommended for online plant shopping!
+
+          </p>
+        </div>
       </div>
 
-      <div class="flex items-center justify-between w-full mt-8">
-          <button class="px-6 py-2.5 border border-white/50 text-white rounded-xl hover:bg-white/20 transition font-medium">
+      <!-- card -->
+
+      <div class="hidden md:block pt-[150px] animate-slide-right opacity-0">
+        <div
+          class="relative max-w-[320px] bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-6 flex flex-col items-center">
+
+          <div class="h-[220px] flex items-end justify-center w-full">
+            <img id="hero-img" src="./assets/plant-1 (1).png"
+              class="max-w-[280px] max-h-[300px] object-contain drop-shadow-2xl -mb-[20px] transition-all duration-500"
+              alt="Plant">
+          </div>
+
+          <div class="pt-6 text-center transition-opacity duration-500" id="hero-text-container">
+            <p class="text-gray-300 text-xs font-medium tracking-widest uppercase mb-1">Trendy House Plant</p>
+            <h2 id="hero-title" class="text-3xl font-bold text-white mb-2 leading-tight">
+              Calathea plant
+            </h2>
+            <p id="hero-desc" class="font-normal text-gray-300 text-sm opacity-90 leading-relaxed min-h-[80px]">
+              Calathea is a decorative indoor plant with vibrant patterned leaves, thriving in humidity and indirect
+              light.
+            </p>
+          </div>
+
+          <div class="flex items-center justify-between w-full mt-4">
+            <button id="hero-buy-btn" onclick="openPaymentModal(1)"
+              class="px-6 py-2.5 border border-white/50 text-white rounded-xl hover:bg-white/20 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all duration-300 font-medium tracking-wide">
               Buy Now
-          </button>
-          <button class="text-white text-xl bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+            </button>
+            <button
+              class="text-white text-xl bg-white/10 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
               <i class="fa-solid fa-chevron-right text-sm"></i>
-          </button>
+            </button>
+          </div>
+
+          <div class="flex gap-1.5 mt-6">
+            <span class="w-5 h-1.5 bg-white rounded-full"></span>
+            <span class="w-1.5 h-1.5 bg-white/50 rounded-full"></span>
+            <span class="w-1.5 h-1.5 bg-white/50 rounded-full"></span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </header>
+
+  <main class="pt-[60px] px-2 md:px-[57px] bg-[#14291c] justify-center ">
+    <!-- trendy products section -->
+    <div class="text-center">
+      <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[150px] pt-[80px] md:pb-[250px] md:pt-[100px]  ">Our Trendy
+        plants</h1>
+
+    </div>
+    <!-- selling products (rendered by JS) -->
+    <div id="product-grid"></div>
+    <!-- Category Gallery Section -->
+    <section id="category-gallery" class="pt-24 pb-32 px-4 md:px-[57px]">
+      <div class="text-center mb-16">
+        <h2 class="font-semibold text-white text-[45px] md:text-[55px] mb-4">Plant Type</h2>
+        <p class="text-white/60 text-sm md:text-base max-w-2xl mx-auto">Explore our diverse collection grouped perfectly
+          by biological class and care requirements.</p>
       </div>
 
-      <div class="flex gap-1.5 mt-6">
-        <span class="w-5 h-1.5 bg-white rounded-full"></span>
-        <span class="w-1.5 h-1.5 bg-white/50 rounded-full"></span>
-        <span class="w-1.5 h-1.5 bg-white/50 rounded-full"></span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Category 1 -->
+        <div
+          class="group relative overflow-hidden rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-md aspect-[4/3] md:aspect-square shadow-2xl cursor-pointer">
+          <img src="./assets/plant-3-removebg-preview (1).png" alt="Cactus"
+            class="w-full h-full object-contain p-10 group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-8 left-8 transition-transform duration-500 group-hover:-translate-y-2">
+            <h3 class="text-white text-3xl font-bold tracking-wide">Cactus</h3>
+            <p
+              class="text-green-400 text-sm font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+              Desert Resilience</p>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div
+          class="group relative overflow-hidden rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-md aspect-[4/3] md:aspect-square shadow-2xl cursor-pointer">
+          <img src="./assets/plant-4-removebg-preview (1).png" alt="Tropical"
+            class="w-full h-full object-contain p-10 group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-8 left-8 transition-transform duration-500 group-hover:-translate-y-2">
+            <h3 class="text-white text-3xl font-bold tracking-wide">Tropical</h3>
+            <p
+              class="text-green-400 text-sm font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+              Lush Jungles</p>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div
+          class="group relative overflow-hidden rounded-[35px] border border-white/10 bg-white/5 backdrop-blur-md aspect-[4/3] md:aspect-square shadow-2xl cursor-pointer">
+          <img src="./assets/plant-1 (1).png" alt="Succulent"
+            class="w-full h-full object-contain p-10 group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-8 left-8 transition-transform duration-500 group-hover:-translate-y-2">
+            <h3 class="text-white text-3xl font-bold tracking-wide">Succulent</h3>
+            <p
+              class="text-green-400 text-sm font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+              Water Storing</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-  </div>
-</div>
-
- 
-
-
-</section>
-
-</header>
-
-<main class="pt-[60px] px-2 md:px-[57px] bg-[#14291c] justify-center ">
-  <!-- trendy products section -->
-   <div class="text-center">
-    <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[150px] pt-[80px] md:pb-[250px] md:pt-[100px]  ">Our Trendy plants</h1>
-
-   </div>
-   <!-- selling products -->
-    <div class="flex flex-col md:flex-row justify-center items-center gap-y-[150px]  md:gap-[100px]">
-
-    <!-- 1st card -->
-      <div class="max-w-[300px] min-h-[500px]  md:w-[560px] md:h-[600px] drop-shadow-2xl  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20">
-        <img  src="./assets/plant-1 (1).png" class="mx-auto -mt-[160px]" alt="">
-        <div class="px-[25px]  text-[#FFFFFF] opacity-75">
-           <h2 class=" font-normal text-[25px]  md:text-[50px]">Calathea plant</h2>
-         <p class="font-normal text-[12px] md:text-[20px] py-3">Calathea is a decorative indoor plant with vibrant patterned leaves, thriving in humidity and indirect light.</p>
-         <div class="flex justify-between items-center pb-2">
-          <h1 class=" text-[25px] md:text-[25px]">Rs. 359/-</h1>
-          <i class=" text-[25px] md:text-[25px] fa-solid fa-bag-shopping cursor-pointer"></i>
-         </div>
-        </div>
-        
-    </div>
-
-
-    <!-- 2nd card -->
-      <div class= "  max-w-[300px] min-h-[500px] md:w-[560px] md:h-[600px]  drop-shadow-2xl  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20">
-        <img  src="./assets/plant-2-removebg-preview (1).png" class="mx-auto -mt-[160px] w-auto" alt="">
-        <div class="px-[25px]  text-[#FFFFFF] opacity-75">
-           <h2 class=" font-normal text-[25px]  md:text-[50px]">Zebra Plant</h2>
-         <p class="font-normal text-[12px] md:text-[20px] py-3">A charming, tiny succulent with striking white-striped ridges. It is incredibly hardy, drought-tolerant, and perfect for small desk spaces.</p>
-         <div class="flex justify-between items-center pb-2">
-          <h1 class=" text-[25px] md:text-[25px]">Rs. 600/-</h1>
-          <i class=" text-[25px] md:text-[25px] fa-solid fa-bag-shopping cursor-pointer"></i>
-         </div>
-        </div>
-        
-    </div>
-
-    <!-- 3rd card -->
-      <div class="max-w-[300px] min-h-[500px] md:w-[560px] md:h-[600px] drop-shadow-2xl  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20">
-        <img  src="./assets/plant-3-removebg-preview (1).png" class="mx-auto -mt-[130px]" alt="">
-        <div class="px-[25px]  text-[#FFFFFF] opacity-75">
-           <h2 class=" font-normal text-[25px]  md:text-[50px]">Blue Torch Cactus</h2>
-         <p class="font-normal text-[12px] md:text-[20px] py-3">This columnar cactus stands out with a unique silvery-blue skin and golden spines, bringing a modern, desert-chic look to windowsills.</p>
-         <div class="flex justify-between items-center pb-2">
-          <h1 class=" text-[25px] md:text-[25px]">Rs. 359/-</h1>
-          <i class=" text-[25px] md:text-[25px] fa-solid fa-bag-shopping cursor-pointer"></i>
-         </div>
-        </div>
-        
-    </div>
-
-
-    
-
-    
-
-
-
-    </div>
-
-
-
-    <!-- selling products part 2 -->
-      
-    <div class="flex flex-col md:flex-row justify-center items-center gap-y-[150px]  md:gap-[100px] pt-36">
-
-    <!-- 4th card -->
-      <div class="max-w-[300px] min-h-[500px]  md:w-[560px] md:h-[600px] drop-shadow-2xl  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20">
-        <img  src="./assets/plant-4-removebg-preview (1).png" class="mx-auto -mt-[160px]" alt="">
-        <div class="px-[25px]  text-[#FFFFFF] opacity-75">
-           <h2 class=" font-normal text-[25px]  md:text-[50px]">Monstera Deliciosa</h2>
-         <p class="font-normal text-[12px] md:text-[20px] py-3">Known for its iconic "Swiss cheese" leaf holes, this trendy climber thrives in indirect light and adds instant jungle elegance.</p>
-         <div class="flex justify-between items-center pb-2">
-          <h1 class=" text-[25px] md:text-[25px]">Rs. 359/-</h1>
-          <i class=" text-[25px] md:text-[25px] fa-solid fa-bag-shopping cursor-pointer"></i>
-         </div>
-        </div>
-        
-    </div>
-
-
-    <!-- 5th card -->
-      <div class= "  max-w-[300px] min-h-[500px] md:w-[560px] md:h-[600px]  drop-shadow-2xl  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20">
-        <img  src="./assets/plant-5-removebg-preview (1).png" class="mx-auto -mt-[155px] w-auto" alt="">
-        <div class="px-[25px]  text-[#FFFFFF] opacity-75">
-           <h2 class=" font-normal text-[25px]  md:text-[50px]">Bird of Paradise</h2>
-         <p class="font-normal text-[12px] md:text-[20px] py-3">Featuring dramatic, banana-like leaves, this tropical giant brings a bold, architectural statement and exotic "jungle vibes" to any sunlit room.</p>
-         <div class="flex justify-between items-center pb-2">
-          <h1 class=" text-[25px] md:text-[25px]">Rs. 459/-</h1>
-          <i class=" text-[25px] md:text-[25px] fa-solid fa-bag-shopping cursor-pointer"></i>
-         </div>
-        </div>
-        
-    </div>
-
-    <!-- 6th card -->
-      <div class="max-w-[300px] min-h-[500px] md:w-[560px] md:h-[600px] drop-shadow-2xl  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20">
-        <img  src="./assets/plant-6-removebg-preview (1).png" class="mx-auto -mt-[130px]" alt="">
-        <div class="px-[25px]  text-[#FFFFFF] opacity-75">
-           <h2 class=" font-normal text-[25px]  md:text-[50px]">Zebra Haworthia</h2>
-         <p class="font-normal text-[12px] md:text-[20px] py-3">A charming, tiny succulent with striking white-striped ridges. It is incredibly hardy, drought-tolerant, and perfect for small desk spaces.</p>
-         <div class="flex justify-between items-center pb-2">
-          <h1 class=" text-[25px] md:text-[25px]">Rs. 300/-</h1>
-          <i class=" text-[25px] md:text-[25px] fa-solid fa-bag-shopping cursor-pointer"></i>
-         </div>
-        </div>
-        
-    </div>
-
-
-    </div>
     <!-- customer review section -->
-    <section>
-       <div class="text-center">
-    <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[70px] pt-[90px] md:pb-[120px] md:pt-[150px]  ">Customer Review</h1>
-   </div>
-   <!-- reviews -->
-    <div class="flex flex-col md:flex-row justify-center items-center gap-y-[50px]  md:gap-[100px]">
-      <!-- 1st review -->
-       <div class="w-auto max-w-[300px] md:max-w-[500px] md:h-[280px]  overflow-hidden mt-[30px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
-        <div class="flex flex-row gap-x-[44px]">
-        <div class="avatar">
-    <div class="w-12 md:w-[64px] rounded-full ">
-      <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
-    </div>
-       </div>
-       <div class="flex flex-col">
-        <p class="font-semibold text-white text-[25px]">Maxn Raval</p>
-
-        <div class="rating pt-2">
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star" checked="checked" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
+    <section id="review-section" class="relative z-20">
+      <div class="text-center">
+        <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[70px] pt-[90px] md:pb-[120px] md:pt-[150px]  ">Customer
+          Review</h1>
       </div>
+      <!-- reviews -->
+      <div class="flex flex-col md:flex-row justify-center items-center gap-y-[50px]  md:gap-[100px]">
+        <!-- 1st review -->
+        <div
+          class="review-card relative overflow-hidden w-auto max-w-[300px] md:max-w-[500px] md:h-[280px] mt-[30px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
+          <div class="flex flex-row gap-x-[44px]">
+            <div class="avatar">
+              <div class="w-12 md:w-[64px] rounded-full ">
+                <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <p class="font-semibold text-white text-[25px]">Maxn Raval</p>
+
+              <div class="rating pt-2">
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star"
+                  checked="checked" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
+              </div>
+            </div>
+
+          </div>
+          <p class=" text-[#FFFFFF] opacity-75 text-[10px] md:text-[16px] font-normal pt-3 pb-5">I had a wonderful
+            experience ordering from this plant shop’s website. The layout is clean and easy to use, and I found both
+            indoor plants and garden trees in minutes. My mango tree arrived healthy and well-packed. You can really
+            tell they care about quality and customer satisfaction. I’ll definitely be ordering again!</p>
+        </div>
+
+        <!-- 2nd review -->
+        <div
+          class="review-card relative w-auto max-w-[300px] md:max-w-[500px] md:h-[280px]  mt-[30px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
+          <div class="flex flex-row gap-x-[44px]">
+            <div class="avatar">
+              <div class="w-12 md:w-[64px] rounded-full ">
+                <img src="./assets/client.png" />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <p class="font-semibold text-white text-[25px]">Ayesha R.</p>
+
+              <div class="rating pt-2">
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star"
+                  checked="checked" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
+              </div>
+            </div>
+
+          </div>
+          <p class=" text-[#FFFFFF] opacity-75 text-[10px] md:text-[16px] font-normal pt-3 pb-6">What I love most about
+            this shop is the variety. From small decorative plants to full-sized trees, their website has everything in
+            one place. Delivery was fast, and the plants looked exactly like the photos. Their care tips on the site
+            were also super helpful for a beginner like me.</p>
+        </div>
+
+        <!-- 3rd review -->
+        <div
+          class="review-card relative w-auto max-w-[300px] md:max-w-[500px] mt-[30px] md:h-[280px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
+          <div class="flex flex-row gap-x-[44px]">
+            <div class="avatar">
+              <div class="w-12 md:w-[64px] rounded-full ">
+                <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <p class="font-semibold text-white text-[25px]">Nusrat J.</p>
+
+              <div class="rating pt-2">
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star"
+                  checked="checked" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
+              </div>
+            </div>
+
+          </div>
+          <p class=" text-[#FFFFFF] opacity-75 text-[10px] md:text-[16px] font-normal pt-3 pb-6">This is more than just
+            an online plant store — it feels like a community for plant lovers. The website is smooth, checkout is
+            simple, and the trees I bought for my backyard are growing beautifully. Great prices, great service, and
+            amazing greenery. Highly recommended!</p>
+        </div>
+
+
       </div>
-
-    </div>
-    <p class=" text-[#FFFFFF] opacity-75 text-[10px] md:text-[16px] font-normal pt-3 pb-5">I had a wonderful experience ordering from this plant shop’s website. The layout is clean and easy to use, and I found both indoor plants and garden trees in minutes. My mango tree arrived healthy and well-packed. You can really tell they care about quality and customer satisfaction. I’ll definitely be ordering again!</p>
-       </div>
-
-       <!-- 2nd review -->
-       <div class="w-auto max-w-[300px] md:max-w-[500px] md:h-[280px]  mt-[30px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
-        <div class="flex flex-row gap-x-[44px]">
-        <div class="avatar">
-    <div class="w-12 md:w-[64px] rounded-full ">
-      <img src="./assets/client.png" />
-    </div>
-       </div>
-       <div class="flex flex-col">
-        <p class="font-semibold text-white text-[25px]">Ayesha R.</p>
-
-        <div class="rating pt-2">
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star" checked="checked" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
-      </div>
-      </div>
-
-    </div>
-    <p class=" text-[#FFFFFF] opacity-75 text-[10px] md:text-[16px] font-normal pt-3 pb-6">What I love most about this shop is the variety. From small decorative plants to full-sized trees, their website has everything in one place. Delivery was fast, and the plants looked exactly like the photos. Their care tips on the site were also super helpful for a beginner like me.</p>
-       </div>
-
-       <!-- 3rd review -->
-       <div class="w-auto max-w-[300px] md:max-w-[500px] mt-[30px] md:h-[280px]  bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 p-8">
-        <div class="flex flex-row gap-x-[44px]">
-        <div class="avatar">
-    <div class="w-12 md:w-[64px] rounded-full ">
-      <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
-    </div>
-       </div>
-       <div class="flex flex-col">
-        <p class="font-semibold text-white text-[25px]">Nusrat J.</p>
-
-        <div class="rating pt-2">
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="1 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="2 star" checked="checked" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
-     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
-      </div>
-      </div>
-
-    </div>
-    <p class=" text-[#FFFFFF] opacity-75 text-[10px] md:text-[16px] font-normal pt-3 pb-6">This is more than just an online plant store — it feels like a community for plant lovers. The website is smooth, checkout is simple, and the trees I bought for my backyard are growing beautifully. Great prices, great service, and amazing greenery. Highly recommended!</p>
-       </div>
-
-
-
-
-          
-  </div>
     </section>
 
     <!--2nd section start -->
 
     <section class="pt[200px] flex flex-col items-center px-4 md:px-0 pb-40">
-       <div class="text-center">
-    <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[70px] pt-[90px] md:pb-[120px] md:pt-[150px]  ">Our Best o2</h1>
-   </div>
-   <div class="max-w-[1300px] w-full min-h-[400px] mt-[30px]   bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 ">
-    <div class="flex flex-col md:flex-row gap-x-[200px]">
-      <div class="w-full md:w-1/2 flex justify-center items-center pt-3 md:pt-0 pr-1">
-        <img src="./assets/home-tree.png" alt="bonsai-trees" class="max-w-full h-auto drop-shadow-2xl">
+      <div class="text-center">
+        <h1 class="font-semibold text-[#FFFFFF] text-[55px] pb-[70px] pt-[90px] md:pb-[120px] md:pt-[150px]  ">Our Best
+          o2</h1>
       </div>
-      <div class="w-full md:w-[600px] px-4 md:px-0 text-center md:text-left mr-0 md:mr-4 ">
-        <h1 class="font-semibold text-white opacity-75 text-[25px] md:text-[35px] pt-14 pb-8">We Have Small And Best O2 Plants Collection’s</h1>
-        <p class="font-semibold text-white text-[12px] md:text-[18px]  opacity-75  pb-6">Transform your living space into a personal sanctuary designed to nurture your well-being. Our hand-selected $O_2$ plants are chosen for their vibrant patterns and their natural ability to purify the atmosphere, effectively reducing your daily stress.</p>
-        <p class="font-semibold text-white text-[12px] md:text-[18px]  opacity-75 pb-6">Create a sense of lasting tranquility in any room, from your home office to your bedside. Our collection offers low-maintenance beauty that allows your indoor garden to flourish effortlessly, bringing nature's peace directly to you.</p>
-      <button class="px-8 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-[#14291c] transition-all duration-300 font-medium mb-4 ">
-                        Explore More
-                    </button>
-      </div>
+      <div
+        class="max-w-[1300px] w-full min-h-[400px] mt-[30px]   bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 ">
+        <div class="flex flex-col md:flex-row gap-x-[200px]">
+          <div class="w-full md:w-1/2 flex justify-center items-center pt-3 md:pt-0 pr-1">
+            <img src="./assets/home-tree.png" alt="bonsai-trees" class="max-w-full h-auto drop-shadow-2xl">
+          </div>
+          <div class="w-full md:w-[600px] px-4 md:px-0 text-center md:text-left mr-0 md:mr-4 ">
+            <h1 class="font-semibold text-white opacity-75 text-[25px] md:text-[35px] pt-14 pb-8">We Have Small And Best
+              O2 Plants Collection’s</h1>
+            <p class="font-semibold text-white text-[12px] md:text-[18px]  opacity-75  pb-6">Transform your living space
+              into a personal sanctuary designed to nurture your well-being. Our hand-selected $O_2$ plants are chosen
+              for their vibrant patterns and their natural ability to purify the atmosphere, effectively reducing your
+              daily stress.</p>
+            <p class="font-semibold text-white text-[12px] md:text-[18px]  opacity-75 pb-6">Create a sense of lasting
+              tranquility in any room, from your home office to your bedside. Our collection offers low-maintenance
+              beauty that allows your indoor garden to flourish effortlessly, bringing nature's peace directly to you.
+            </p>
+            <button onclick="openBonsaiModal()"
+              class="px-8 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-[#14291c] transition-all duration-300 font-medium mb-4 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+              Explore More
+            </button>
+          </div>
 
 
-    </div>
-      
-   </div>
-      
+        </div>
+
+      </div>
+
 
     </section>
 
-</main>
- 
-<!-- footer section -->
- <footer class="footer sm:footer-horizontal bg-[#08160E] text-white p-10">
-  <nav>
-  <div class="flex flex-row items-center">
-    <img src="./assets/house-plants.png" alt="" class="w-16">
-    <p class="text-[35px] font-black opacity-75">PLANTO.</p>
-  </div>
-  <p class="text-[12px] font-semibold ">Bringing nature indoors, one leaf at a time.<br> Planto is dedicated to providing high-quality houseplants and the knowledge you need to help them flourish in any environment.</p>
+  </main>
 
-  </nav>
-  <nav>
-    <h6 class="footer-title">Company</h6>
-    <a class="link link-hover">About us</a>
-    <a class="link link-hover">Contact</a>
-    <a class="link link-hover">Jobs</a>
-    <a class="link link-hover">Press kit</a>
-  </nav>
-  <nav>
-    <h6 class="footer-title">Legal</h6>
-    <a class="link link-hover">Terms of use</a>
-    <a class="link link-hover">Privacy policy</a>
-    <a class="link link-hover">Cookie policy</a>
-  </nav>
-  <form>
-    <h6 class="footer-title">Newsletter</h6>
-    <fieldset class="w-80">
-      <label >Enter your email address</label>
-      <div class="join">
-        <input
-          type="text"
-          placeholder="username@site.com"
-          class="input input-bordered join-item" />
-        <button class="btn btn-primary join-item bg-green-600">Subscribe</button>
+  <!-- footer section -->
+  <footer class="footer sm:footer-horizontal bg-[#08160E] text-white p-10">
+    <nav>
+      <div class="flex flex-row items-center">
+        <img src="./assets/house-plants.png" alt="" class="w-16">
+        <p class="text-[35px] font-black opacity-75">PLANTO.</p>
       </div>
-    </fieldset>
-  </form>
-</footer>
+      <p class="text-[12px] font-semibold ">Bringing nature indoors, one leaf at a time.<br> Planto is dedicated to
+        providing high-quality houseplants and the knowledge you need to help them flourish in any environment.</p>
 
+    </nav>
+    <nav>
+      <h6 class="footer-title">Company</h6>
+      <a class="link link-hover">About us</a>
+      <a class="link link-hover">Contact</a>
+      <a class="link link-hover">Jobs</a>
+      <a class="link link-hover">Press kit</a>
+    </nav>
+    <nav>
+      <h6 class="footer-title">Legal</h6>
+      <a class="link link-hover">Terms of use</a>
+      <a class="link link-hover">Privacy policy</a>
+      <a class="link link-hover">Cookie policy</a>
+    </nav>
+    <form id="newsletter-form" onsubmit="handleNewsletter(event)">
+      <h6 class="footer-title">Newsletter</h6>
+      <fieldset class="w-80">
+        <label>Enter your email address</label>
+        <div class="join">
+          <input type="email" id="newsletter-email" placeholder="username@site.com"
+            class="input input-bordered join-item" required />
+          <button type="submit"
+            class="btn btn-primary join-item bg-green-600 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all duration-300">Subscribe</button>
+        </div>
+      </fieldset>
+    </form>
+  </footer>
+
+
+  <!-- Bonsai Care Modal -->
+  <div id="bonsai-modal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <div id="bonsai-modal-content"
+      class="relative w-[90%] max-w-[500px] rounded-[30px] p-8 md:p-10 scale-90 transition-transform duration-500 shadow-2xl border border-green-500/20"
+      style="background: linear-gradient(145deg, rgba(20,41,28,0.95), rgba(8,22,14,0.98)); backdrop-filter: blur(40px); transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+      <button onclick="closeBonsaiModal()"
+        class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/50 hover:bg-white/10 hover:text-white transition-all ring-1 ring-white/10 hover:ring-white/30 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">✕</button>
+      <h3 class="text-3xl font-bold text-white mb-2">Bonsai Care</h3>
+      <p class="text-green-400 font-medium mb-6 uppercase tracking-widest text-xs">Japanese Art of Oxygen</p>
+      <div class="space-y-4 text-white/80 text-sm leading-relaxed">
+        <p><strong class="text-white">Watering:</strong> Needs consistent moisture. Water deeply when the topsoil feels
+          slightly dry.</p>
+        <p><strong class="text-white">Sunlight:</strong> Requires bright, indirect sunlight. Direct noon sun can scorch
+          the miniature leaves.</p>
+        <p><strong class="text-white">Pruning:</strong> Regular trimming is essential to maintain the desired structural
+          canopy.</p>
+        <p><strong class="text-white">Environment:</strong> Thrives in stable temperatures between 60-80°F. Sensitive to
+          cold drafts.</p>
+      </div>
+      <button onclick="closeBonsaiModal()"
+        class="w-full mt-8 py-3.5 rounded-xl bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold hover:from-green-500 hover:to-green-400 transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.2)] hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] tracking-wide">Got
+        it</button>
+    </div>
+  </div>
 
   <!-- Flowbite JS (CDN) -->
-   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+  <script>
+    /**
+     * PRODUCT DATA STORE
+     * ===================
+     * This is the single source of truth for all product information.
+     * To add, remove, or modify a product, simply edit this array.
+     *
+     * Each product object contains:
+     * - id          : Unique identifier used by the cart system.
+     * - name        : Display name shown on the card and in toast messages.
+     * - price       : Formatted price string displayed to the customer.
+     * - description : Short marketing copy for the product card.
+     * - imagePath   : Relative path to the product image in /assets.
+     * - imageClass  : Tailwind classes controlling image position/size
+     *                 (varies per product to match the original design).
+     */
+    const products = [
+      {
+        id: 1,
+        name: "Calathea plant",
+        price: "Rs. 359/-",
+        description: "Calathea is a decorative indoor plant with vibrant patterned leaves, thriving in humidity and indirect light.",
+        imagePath: "./assets/plant-1 (1).png",
+        imageClass: "mx-auto -mt-[160px]"
+      },
+      {
+        id: 2,
+        name: "Zebra Plant",
+        price: "Rs. 600/-",
+        description: "A charming, tiny succulent with striking white-striped ridges. It is incredibly hardy, drought-tolerant, and perfect for small desk spaces.",
+        imagePath: "./assets/plant-2-removebg-preview (1).png",
+        imageClass: "mx-auto -mt-[160px] w-auto"
+      },
+      {
+        id: 3,
+        name: "Blue Torch Cactus",
+        price: "Rs. 359/-",
+        description: "This columnar cactus stands out with a unique silvery-blue skin and golden spines, bringing a modern, desert-chic look to windowsills.",
+        imagePath: "./assets/plant-3-removebg-preview (1).png",
+        imageClass: "mx-auto -mt-[130px]"
+      },
+      {
+        id: 4,
+        name: "Monstera Deliciosa",
+        price: "Rs. 359/-",
+        description: 'Known for its iconic "Swiss cheese" leaf holes, this trendy climber thrives in indirect light and adds instant jungle elegance.',
+        imagePath: "./assets/plant-4-removebg-preview (1).png",
+        imageClass: "mx-auto -mt-[160px]"
+      },
+      {
+        id: 5,
+        name: "Bird of Paradise",
+        price: "Rs. 459/-",
+        description: 'Featuring dramatic, banana-like leaves, this tropical giant brings a bold, architectural statement and exotic "jungle vibes" to any sunlit room.',
+        imagePath: "./assets/plant-5-removebg-preview (1).png",
+        imageClass: "mx-auto -mt-[155px] w-auto"
+      },
+      {
+        id: 6,
+        name: "Zebra Haworthia",
+        price: "Rs. 300/-",
+        description: "A charming, tiny succulent with striking white-striped ridges. It is incredibly hardy, drought-tolerant, and perfect for small desk spaces.",
+        imagePath: "./assets/plant-6-removebg-preview (1).png",
+        imageClass: "mx-auto -mt-[130px]"
+      }
+    ];
+
+    /**
+     * renderProducts()
+     * -----------------
+     * Dynamically generates product card HTML from the `products` array
+     * and injects it into the #product-grid container.
+     *
+     * Layout Logic:
+     * - Cards are arranged in rows of 3 using Tailwind flex classes.
+     * - The first row has no top padding; subsequent rows get `pt-36`
+     *   to maintain visual spacing consistent with the original design.
+     * - Each card includes an onclick handler on the bag icon that
+     *   calls addToCart(id) to enable cart functionality.
+     *
+     * Why this approach?
+     * - Single source of truth: changing a product's data in the array
+     *   automatically updates the rendered card on next page load.
+     * - Easy to scale: adding a new product = adding one object to the array.
+     */
+    function renderProducts() {
+      const grid = document.getElementById("product-grid");
+      if (!grid) return;
+
+      const rowSize = 3; // Number of cards per row (matches the 3-column design)
+      let html = "";
+
+      for (let i = 0; i < products.length; i += rowSize) {
+        const rowProducts = products.slice(i, i + rowSize);
+        const isFirstRow = i === 0;
+
+        // Create a flex row container — extra top padding for rows after the first
+        html += `<div class="flex flex-col md:flex-row justify-center items-center gap-y-[150px] md:gap-[100px]${isFirstRow ? '' : ' pt-36'}">`;
+
+        rowProducts.forEach((product) => {
+          html += `
+          <div class="max-w-[300px] min-h-[500px] md:w-[560px] md:h-[600px] drop-shadow-2xl bg-white/10 backdrop-blur-lg rounded-[35px] shadow-xl border border-white/20 hover:scale-105 transition-all duration-300" data-product-id="${product.id}">
+            <img src="${product.imagePath}" class="${product.imageClass}" alt="${product.name}">
+            <div class="px-[25px] text-[#FFFFFF]">
+              <h2 class="font-semibold text-3xl truncate">${product.name}</h2>
+              <p class="font-normal text-sm py-4 opacity-75 min-h-[90px] leading-relaxed">${product.description}</p>
+              <div class="flex justify-between items-center pb-4 mt-6">
+                <h1 class="text-2xl font-medium">${product.price}</h1>
+                <div class="flex items-center gap-3">
+                  <button onclick="openPaymentModal(${product.id})" class="px-4 py-2.5 text-sm border border-white/50 rounded-xl text-white hover:bg-white/20 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all duration-300 font-medium tracking-wide">Buy Now</button>
+                  <i class="text-2xl fa-solid fa-bag-shopping cursor-pointer hover:text-green-400 transition-colors duration-200" onclick="addToCart(${product.id})"></i>
+                </div>
+              </div>
+            </div>
+          </div>`;
+        });
+
+        html += `</div>`;
+      }
+
+      grid.innerHTML = html;
+    }
+
+    /**
+     * CART SYSTEM
+     * ===========
+     * The `cart` array acts as an in-memory data store for the shopping cart.
+     * Each entry is a product object (spread from `products`) plus a `qty` field.
+     *
+     * In a production app, this would be persisted to localStorage or
+     * synced with a backend API (e.g., POST /api/cart). For this demo,
+     * it lives in memory and resets on page reload.
+     */
+    const cart = [];
+
+    /**
+     * addToCart(id)
+     * -------------
+     * Called when a user clicks the bag icon on any product card.
+     * - Looks up the product by ID from the master `products` array.
+     * - If the product is already in the cart, increments its quantity.
+     * - If it's new, pushes a copy with qty: 1 (using spread operator
+     *   to avoid mutating the original product object).
+     * - Updates the navbar badge count and fires a toast notification.
+     *
+     * @param {number} id — The unique product ID from the products array.
+     */
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1; // Returning customer for this product
+      } else {
+        cart.push({ ...product, qty: 1 }); // First time adding this product
+      }
+
+      updateCartCount();
+      showToast(`${product.name} added to cart! 🌿`);
+    }
+
+    /**
+     * updateCartCount()
+     * ------------------
+     * Calculates the total number of items across all cart entries
+     * (summing each item's qty) and updates the green badge in the navbar.
+     *
+     * Visual feedback:
+     * - Badge appears (removes 'hidden') when count > 0.
+     * - A quick scale-up pulse animation draws the user's eye to the change.
+     * - Badge hides again if cart is emptied.
+     */
+    function updateCartCount() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const badge = document.getElementById("cart-count");
+      if (!badge) return;
+
+      badge.textContent = totalItems;
+      if (totalItems > 0) {
+        badge.classList.remove("hidden");
+        // Micro-animation: scale up briefly to catch the user's attention
+        badge.style.transform = "scale(1.4)";
+        setTimeout(() => { badge.style.transform = "scale(1)"; }, 200);
+        badge.style.transition = "transform 0.2s ease";
+      } else {
+        badge.classList.add("hidden");
+      }
+    }
+
+    /**
+     * showToast(message)
+     * -------------------
+     * Creates and displays a glassmorphic notification popup in the
+     * top-right corner of the viewport.
+     *
+     * Lifecycle:
+     * 1. A new <div> is created with Tailwind utility classes for styling.
+     * 2. The 'toast-enter' CSS class triggers a slideInRight animation.
+     * 3. After 3 seconds, the class swaps to 'toast-exit' (slideOutRight).
+     * 4. On animation end, the DOM element is removed to prevent memory leaks.
+     *
+     * Multiple toasts stack vertically thanks to the flex-col + gap-3
+     * on the #toast-container.
+     *
+     * @param {string} message — The text to display inside the toast.
+     */
+    function showToast(message) {
+      const container = document.getElementById("toast-container");
+      if (!container) return;
+
+      const toast = document.createElement("div");
+      toast.className = `
+        toast-enter flex items-center gap-3 px-5 py-4 rounded-2xl
+        bg-white/15 backdrop-blur-xl border border-white/20
+        shadow-[0_8px_32px_rgba(0,0,0,0.3)] text-white text-sm font-medium
+        min-w-[280px] max-w-[360px]
+      `;
+      toast.innerHTML = `
+        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-green-500/20 text-green-400 shrink-0">
+          <i class="fa-solid fa-check text-sm"></i>
+        </span>
+        <span>${message}</span>
+      `;
+
+      container.appendChild(toast);
+
+      // Auto-dismiss: swap animation class after 3s, then remove from DOM
+      setTimeout(() => {
+        toast.classList.remove("toast-enter");
+        toast.classList.add("toast-exit");
+        toast.addEventListener("animationend", () => toast.remove());
+      }, 3000);
+    }
+
+    /**
+     * NEWSLETTER FORM HANDLER
+     * ========================
+     * Handles the footer newsletter subscription form.
+     *
+     * Current behavior (client-side demo):
+     * - Validates the email field (HTML5 type="email" + required attribute).
+     * - Shows a thank-you toast notification.
+     * - Clears the input field for the next submission.
+     *
+     * Production upgrade path:
+     * - Replace the showToast call with a fetch() POST to your
+     *   email service API (e.g., Mailchimp, SendGrid, or a custom endpoint).
+     * - Add loading state on the submit button during the request.
+     * - Handle error responses and show appropriate feedback.
+     *
+     * @param {Event} event — The form submit event (prevented from reloading).
+     */
+    function handleNewsletter(event) {
+      event.preventDefault(); // Prevent page reload on form submit
+
+      const emailInput = document.getElementById("newsletter-email");
+      const email = emailInput.value.trim();
+
+      if (!email) return; // Extra safety check (HTML5 validation should catch this)
+
+      // Show success feedback to the user
+      showToast(`Thank you for subscribing! 🌱 We'll keep you updated.`);
+
+      // Clear the input field for potential next submission
+      emailInput.value = "";
+    }
+
+    /**
+     * MOBILE MENU TOGGLE
+     * ===================
+     * Handles the hamburger menu button on mobile viewports (<768px).
+     *
+     * Why custom JS instead of Flowbite's data-collapse-toggle?
+     * - Flowbite's JS initialization can be unreliable when loaded via CDN
+     *   alongside Tailwind CSS CDN and DaisyUI. This custom handler ensures
+     *   the menu always works regardless of library load order.
+     *
+     * Accessibility:
+     * - Updates aria-expanded attribute for screen readers.
+     * - The menu element uses the existing 'hidden' class toggle pattern,
+     *   which is consistent with Tailwind's display utility approach.
+     */
+    function initMobileMenu() {
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("navbar-sticky");
+      if (!btn || !menu) return;
+
+      btn.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
+        if (isOpen) {
+          menu.classList.add("hidden");
+          btn.setAttribute("aria-expanded", "false");
+        } else {
+          menu.classList.remove("hidden");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+    }
+
+    /**
+     * PAYMENT MODAL SYSTEM
+     * =====================
+     * Manages a full checkout flow triggered by the 'Buy Now' button
+     * on each product card.
+     *
+     * Flow:
+     * 1. openPaymentModal(id) — Shows the modal with the product's
+     *    name and price, and presents three payment method options.
+     * 2. processPayment(method) — Simulates a 2-second payment processing
+     *    period with a spinner, then shows a success confirmation.
+     * 3. closePaymentModal() — Smoothly closes the modal with exit animations
+     *    and resets all internal states for the next use.
+     *
+     * Production upgrade path:
+     * - Replace the setTimeout in processPayment() with a real fetch()
+     *   call to your payment gateway API (e.g., Stripe, SSLCommerz, bKash API).
+     * - Add form fields for card number / mobile number inside each method.
+     * - Persist order data to your backend after successful payment.
+     */
+
+    let currentModalProductId = null; // Tracks which product the modal is showing
+    let selectedPaymentMethod = null; // Tracks the chosen payment method
+
+    /**
+     * playClickSound()
+     * ------------------
+     * Plays a subtle UI click sound using the Web Audio API.
+     * Creates an oscillator with a short decay to mimic a soft "tap".
+     * No external audio files needed — pure code-generated sound.
+     */
+    function playClickSound() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(800, ctx.currentTime);   // Starting pitch
+        osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.08); // Quick pitch drop
+
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);      // Subtle volume
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12); // Quick fade
+
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.12);
+      } catch (e) {
+        // Audio not supported — fail silently
+      }
+    }
+
+    /**
+     * openPaymentModal(id)
+     * ---------------------
+     * Opens the checkout modal for a specific product.
+     * Populates the order summary (name + price) and resets
+     * all sub-states (input form, processing, success) to initial.
+     *
+     * @param {number} id — The product ID to purchase.
+     */
+    function openPaymentModal(id) {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      currentModalProductId = id;
+      selectedPaymentMethod = null;
+
+      // Populate order summary
+      document.getElementById("modal-product-name").textContent = product.name;
+      document.getElementById("modal-product-price").textContent = product.price;
+
+      // Reset modal to initial state
+      document.getElementById("modal-order-summary").classList.remove("hidden");
+      document.getElementById("modal-input-form").classList.add("hidden");
+      document.getElementById("modal-processing").classList.add("hidden");
+      document.getElementById("modal-success").classList.add("hidden");
+      document.getElementById("modal-input-field").value = "";
+
+      // Show modal with entrance animations
+      const modal = document.getElementById("payment-modal");
+      const backdrop = document.getElementById("modal-backdrop");
+      const content = document.getElementById("modal-content");
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      backdrop.classList.remove("modal-overlay-exit");
+      backdrop.classList.add("modal-overlay-enter");
+      content.classList.remove("modal-content-exit");
+      content.classList.add("modal-content-enter");
+
+      document.body.style.overflow = "hidden";
+    }
+
+    /**
+     * closePaymentModal()
+     * --------------------
+     * Closes the modal with a slide-down + fade-out exit animation.
+     * Re-enables body scroll after the animation completes.
+     */
+    function closePaymentModal() {
+      const modal = document.getElementById("payment-modal");
+      const backdrop = document.getElementById("modal-backdrop");
+      const content = document.getElementById("modal-content");
+
+      backdrop.classList.remove("modal-overlay-enter");
+      backdrop.classList.add("modal-overlay-exit");
+      content.classList.remove("modal-content-enter");
+      content.classList.add("modal-content-exit");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
+        currentModalProductId = null;
+        selectedPaymentMethod = null;
+      }, 350);
+    }
+
+    /**
+     * selectPaymentMethod(method)
+     * ----------------------------
+     * Called when a user clicks a payment option button.
+     * Plays a click sound for tactile feedback.
+     *
+     * - Bank Account / bKash: Shows an input form for account/phone number.
+     * - Google Pay: Goes directly to payment processing (instant method).
+     *
+     * @param {string} method — The display name of the payment method.
+     */
+    function selectPaymentMethod(method) {
+      playClickSound();
+      selectedPaymentMethod = method;
+
+      // Google Pay is instant — skip the input form
+      if (method === 'Google Pay') {
+        startProcessing(method);
+        return;
+      }
+
+      // Show input form for Bank Account or bKash/Nagad
+      document.getElementById("modal-order-summary").classList.add("hidden");
+      document.getElementById("modal-input-form").classList.remove("hidden");
+
+      const isBank = method === 'Bank Account';
+      document.getElementById("modal-form-label").textContent = isBank ? "Bank Transfer" : "Mobile Payment";
+      document.getElementById("modal-form-title").textContent = `Pay via ${method}`;
+      document.getElementById("modal-input-label").textContent = isBank ? "Account Number" : "Phone Number (bKash/Nagad)";
+      document.getElementById("modal-input-field").placeholder = isBank ? "e.g. 1234567890" : "e.g. 01XXXXXXXXX";
+      document.getElementById("modal-input-field").value = "";
+      document.getElementById("modal-input-field").focus();
+    }
+
+    /**
+     * backToMethods()
+     * ----------------
+     * Returns the user from the input form back to the
+     * payment method selection screen.
+     */
+    function backToMethods() {
+      document.getElementById("modal-input-form").classList.add("hidden");
+      document.getElementById("modal-order-summary").classList.remove("hidden");
+      selectedPaymentMethod = null;
+    }
+
+    /**
+     * confirmPayment()
+     * -----------------
+     * Called when the user clicks "Confirm Payment" on the input form.
+     * Validates that the input field is not empty, then starts processing.
+     */
+    function confirmPayment() {
+      const input = document.getElementById("modal-input-field").value.trim();
+      if (!input) {
+        document.getElementById("modal-input-field").classList.add("border-red-500/50");
+        setTimeout(() => {
+          document.getElementById("modal-input-field").classList.remove("border-red-500/50");
+        }, 1500);
+        return;
+      }
+      playClickSound();
+      document.getElementById("modal-input-form").classList.add("hidden");
+      startProcessing(selectedPaymentMethod);
+    }
+
+    /**
+     * startProcessing(method)
+     * ------------------------
+     * Shows the spinner for 2 seconds, then displays the success screen.
+     * Also auto-adds the product to the cart on successful "payment".
+     *
+     * In production, the setTimeout would be replaced with an actual
+     * API call to your payment processor (Stripe, SSLCommerz, bKash API).
+     *
+     * @param {string} method — The payment method display name.
+     */
+    function startProcessing(method) {
+      const product = products.find(p => p.id === currentModalProductId);
+      if (!product) return;
+
+      document.getElementById("modal-order-summary").classList.add("hidden");
+      document.getElementById("modal-processing").classList.remove("hidden");
+      document.getElementById("modal-payment-method").textContent = `via ${method}`;
+
+      setTimeout(() => {
+        document.getElementById("modal-processing").classList.add("hidden");
+
+        const successDiv = document.getElementById("modal-success");
+        successDiv.classList.remove("hidden");
+        document.getElementById("modal-success-detail").textContent =
+          `${product.name} (${product.price}) paid via ${method}`;
+
+        addToCart(product.id);
+      }, 2000);
+    }
+
+    // Close modal on Escape key for accessibility
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePaymentModal();
+    });
+
+    /**
+     * DYNAMIC HERO SLIDER
+     * ====================
+     * Automatically rotates the featured plant in the hero card
+     * using the products array to ensure data consistency.
+     */
+    function initHeroSlider() {
+      const heroImg = document.getElementById("hero-img");
+      const heroTitle = document.getElementById("hero-title");
+      const heroDesc = document.getElementById("hero-desc");
+      const heroBuyBtn = document.getElementById("hero-buy-btn");
+      const textContainer = document.getElementById("hero-text-container");
+
+      if (!heroImg || !products.length) return;
+
+      let currentIndex = 0;
+
+      setInterval(() => {
+        // 1. Fade out current content
+        heroImg.classList.add("opacity-0", "scale-95");
+        textContainer.classList.add("opacity-0");
+
+        setTimeout(() => {
+          // 2. Swap data to the next product
+          currentIndex = (currentIndex + 1) % products.length;
+          const nextProduct = products[currentIndex];
+
+          heroImg.src = nextProduct.imagePath;
+          heroTitle.textContent = nextProduct.name;
+          heroDesc.textContent = nextProduct.description;
+          heroBuyBtn.setAttribute("onclick", `openPaymentModal(${nextProduct.id})`);
+
+          // 3. Fade in new content
+          heroImg.classList.remove("opacity-0", "scale-95");
+          textContainer.classList.remove("opacity-0");
+        }, 500); // 500ms delay matches the CSS transition duration
+      }, 8000); // Rotates every 8 seconds
+    }
+
+    /**
+     * ADVANCED REVIEW FOCUS MODE
+     * ===========================
+     * Creates a premium blurring effect across the entire site
+     * EXCEPT for the review section when the user hovers over it.
+     */
+    function initFocusMode() {
+      const reviewSection = document.getElementById("review-section");
+      if (!reviewSection) return;
+
+      reviewSection.addEventListener("mouseenter", () => {
+        document.body.classList.add("focus-mode");
+      });
+
+      reviewSection.addEventListener("mouseleave", () => {
+        document.body.classList.remove("focus-mode");
+      });
+    }
+
+    /**
+     * APPLICATION BOOTSTRAP
+     * ======================
+     * All initialization runs after the DOM is fully parsed.
+     * This ensures all HTML elements exist before JS tries to reference them.
+     */
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      initMobileMenu();
+      initHeroSlider();
+      initFocusMode();
+    });
+
+    /**
+     * BONSAI CARE MODAL
+     * =================
+     * Handles the opening and zooming transition of the Bonsai details modal.
+     */
+    function openBonsaiModal() {
+      const modal = document.getElementById("bonsai-modal");
+      const content = document.getElementById("bonsai-modal-content");
+
+      modal.classList.remove("hidden", "flex"); // Ensure clean state
+      modal.classList.add("flex");
+
+      // Slight delay to allow display block to process before opacity/transform
+      setTimeout(() => {
+        modal.classList.remove("opacity-0");
+        content.classList.remove("scale-90");
+        content.classList.add("scale-100");
+      }, 10);
+
+      // Add Escape key listener
+      document.addEventListener("keydown", handleBonsaiEscape);
+    }
+
+    function closeBonsaiModal() {
+      const modal = document.getElementById("bonsai-modal");
+      const content = document.getElementById("bonsai-modal-content");
+
+      modal.classList.add("opacity-0");
+      content.classList.remove("scale-100");
+      content.classList.add("scale-90");
+
+      document.removeEventListener("keydown", handleBonsaiEscape);
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }, 300); // Wait for transition to finish
+    }
+
+    function handleBonsaiEscape(e) {
+      if (e.key === "Escape") closeBonsaiModal();
+    }
+  </script>
 </body>
+
 </html>
